@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <title>Frontend Mentor | Ping coming soon page</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="all">
+    <img src="./assets/images/logo.svg" alt="" class="logo">
+    <div class="formulaire">
+      <h1>We are launching <strong>soon!</strong></h1>
+      <p>Subscribe and get notified</p>
+      <form novalidate>
+        <div class="form">
+          <input type="email" placeholder="Your email address" class="">
+          <p id="error" class="error">Please provide a valid email address</p>
+        </div>
+        <button type="submit">Notify Me</button>
+      </form>
+    </div>
+   
+    <div class="image">
+      <img src="./assets/images/illustration-dashboard.png" alt="" srcset="" class="analyse">
+      <div>
+        <div id="share">
+          <img src="./assets/images/facebook-f-brands-solid.svg" alt="">
+          <img src="./assets/images/twitter-brands-solid.svg" alt="">
+          <img src="./assets/images/instagram-brands-solid.svg" alt="">
+        </div>
+        &copy; Copyright Ping. All rights reserved.
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        rel="noopener noreferrer">Frontend Mentor</a>.
+      Coded by <a href="#">Your Max BCV</a>
+    </p>
+  </footer>
+</body>
+<script>
+  function verifieremaile(email) {
+    let emailRegex = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z0-9._-]+$/i;
+    if (emailRegex.test(email)) {
+      return true
+    } else {
+      console.log("Error");
+
+      return false
+    }
+  }
+  const form = document.querySelector("form");
+  const baliseemail = document.querySelector("input");
+  baliseemail.classList.add("input_va")
+  const error = document.getElementById("error");
+
+  // Cacher le message d’erreur au départ
+
+
+  // Vérification au moment de la soumission
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (verifieremaile(baliseemail.value)) {
+      alert("Subscribe")
+      baliseemail.value = ""
+    } else {
+      error.style.display = "block"
+
+      baliseemail.classList.add("input_er")
+      baliseemail.classList.remove("input_va")
+      baliseemail.value = ""
+    }
+  });
+
+  // Cacher l’erreur si l’utilisateur modifie l’entrée
+  baliseemail.addEventListener("input", (e) => {
+    e.preventDefault();
+    error.style.display = "none";
+    baliseemail.classList.remove("input_er")
+    baliseemail.classList.add("input_va")
+  });
+
+</script>
+
+</html>
